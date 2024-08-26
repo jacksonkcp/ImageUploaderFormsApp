@@ -52,7 +52,6 @@
             this.imageDisplay.Size = new System.Drawing.Size(634, 281);
             this.imageDisplay.TabIndex = 1;
             this.imageDisplay.TabStop = false;
-            this.imageDisplay.Click += new System.EventHandler(this.imageDisplay_Click);
             // 
             // openFileDialog1
             // 
@@ -83,7 +82,6 @@
             this.uploadStatusBox.Name = "uploadStatusBox";
             this.uploadStatusBox.Size = new System.Drawing.Size(329, 20);
             this.uploadStatusBox.TabIndex = 4;
-            this.uploadStatusBox.TextChanged += new System.EventHandler(this.uploadStatusBox_TextChanged);
             // 
             // label1
             // 
@@ -93,7 +91,6 @@
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Upload Status";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // uploadButton
             // 
@@ -114,7 +111,6 @@
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Image Location";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // browseBtn
             // 
@@ -146,7 +142,6 @@
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(329, 20);
             this.locationBox.TabIndex = 2;
-            this.locationBox.TextChanged += new System.EventHandler(this.locationBox_TextChanged);
             // 
             // Form1
             // 

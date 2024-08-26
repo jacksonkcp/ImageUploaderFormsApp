@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -50,24 +52,54 @@ namespace ImageUploaderApp
             }
 
         }
-        private void uploadBtn_Click(object sender, EventArgs e)
+        private async void uploadBtn_Click(object sender, EventArgs e)
         {
-            //using (var form = new MultipartFormDataContent())
-            //{
-            //    form.Add(fileContent, "file", "image.jpg");
+            if (imageDisplay.Image == null)
+            {
+                MessageBox.Show("Browse for an image first!");
+                return;
+            }
 
-            //var response = await _httpClient.PostAsync("http://localhost:5000/upload", form);
-            //var responseString = await response.Content.ReadAsStringAsync();
-            //    uploadStatusBox.Text = responseString; // Display URL or status
-            //}
+            using (var form = new MultipartFormDataContent())
+            {
+                var fileContent = new ByteArrayContent(ImageToByteArray(imageDisplay.Image));
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
 
-            uploadStatusBox.Text = "Success!";
-            uploadStatusBox.BackColor = Color.LightGreen;
+                form.Add(fileContent, "file", "image.jpg");
+
+                using(HttpClient httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync("https://localhost:7035/Upload/image", form);
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    uploadStatusBox.Text = responseString; // Display URL or status
+                }
+
+
+            }
+
+            //uploadStatusBox.Text = "Success!";
+            //uploadStatusBox.BackColor = Color.LightGreen;
         }
 
         private void viewWebPageBtn_Click(object sender, EventArgs e)
         {
+            // URL of the webpage you want to open
+            string url = "https://localhost:7035/index.html";
 
+            try
+            {
+                // Open the URL in the default web browser
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that might occur
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -75,34 +107,13 @@ namespace ImageUploaderApp
 
         }
 
-        private void locationBox_TextChanged(object sender, EventArgs e)
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uploadStatusBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imageDisplay_Click(object sender, EventArgs e)
-        {
-
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
         }
     }
 }

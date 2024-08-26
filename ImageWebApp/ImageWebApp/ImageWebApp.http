@@ -1,0 +1,6 @@
+@ImageWebApp_HostAddress = http://localhost:7035
+
+GET {{ImageWebApp_HostAddress}}/Upload/image
+Accept: application/json
+
+###

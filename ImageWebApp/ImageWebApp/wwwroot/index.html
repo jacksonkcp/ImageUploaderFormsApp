@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Images</title>
+</head>
+<body>
+    <h1>Uploaded Images</h1>
+    <div id="images">
+        <!-- Images will be displayed here -->
+    </div>
+
+    <script>
+        async function loadImages() {
+            const response = await fetch('Upload/api/images');
+            const images = await response.json();
+            const imageDiv = document.getElementById('images');
+
+            images.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image.filePath;
+                imgElement.style.width = '200px';
+                imgElement.style.margin = '10px';
+                imageDiv.appendChild(imgElement);
+            });
+        }
+
+        window.onload = loadImages;
+    </script>
+</body>
+</html>
