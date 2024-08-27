@@ -8,5 +8,6 @@ Technical Challenge 2 for Toppan Security
 Client-side App
 ![UI-1](https://github.com/user-attachments/assets/2e8cb70a-6e41-450a-a98f-2fdebfe73b1d)
 
-Web page
-![image](https://github.com/user-attachments/assets/8ea8b608-916b-44b7-9544-91c3bdbccee2)
+Web Page
+![image](https://github.com/user-attachments/assets/f4ea8522-801c-4f15-bddf-462f8e67b9ae)
+
