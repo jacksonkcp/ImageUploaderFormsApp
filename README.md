@@ -7,7 +7,7 @@ ImageUploaderApp contains the code for the Windows Forms App which is the client
 ImageWebApp contains the code for the UploadController API which listens for HTTP POST requests and also the index.html for the web page that displays the uploaded image.
 
 
---------------------------------
+-----------------------------------------
 
 1) Browse for an image. It will show up in the UI as confirmation.
 2) Click upload to send a POST request to the image upload controller which saves the image to a folder.
@@ -15,6 +15,8 @@ ImageWebApp contains the code for the UploadController API which listens for HTT
 
 Client-side App
 ![UI-1](https://github.com/user-attachments/assets/2e8cb70a-6e41-450a-a98f-2fdebfe73b1d)
+
+----------------------------------------
 
 Web Page
 ![image](https://github.com/user-attachments/assets/f4ea8522-801c-4f15-bddf-462f8e67b9ae)
