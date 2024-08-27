@@ -70,22 +70,32 @@ namespace ImageUploaderApp
                 string fileName = "Image.jpg";
                 form.Add(fileContent, "file", $"{fileName}");
 
+
                 using(HttpClient httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync("https://localhost:7035/Upload/image", form);
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    var jsonRes = JsonConvert.DeserializeObject<Dictionary<string,string>>(responseString);
-
-                    if (jsonRes != null && jsonRes["upload"] == "Success")
+                    try
                     {
-                        uploadStatusBox.Text = "Success!";
-                        uploadStatusBox.BackColor = Color.LightGreen;
+                        var response = await httpClient.PostAsync("https://localhost:7035/Upload/image", form);
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        var jsonRes = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
+
+                        if (jsonRes != null && jsonRes["upload"] == "Success")
+                        {
+                            uploadStatusBox.Text = "Success!";
+                            uploadStatusBox.BackColor = Color.LightGreen;
+                        }
+                        else
+                        {
+                            uploadStatusBox.Text = "Error uploading image!";
+                            uploadStatusBox.BackColor = Color.Red;
+                        }
                     }
-                    else
+                    catch (Exception ex) 
                     {
                         uploadStatusBox.Text = "Error uploading image!";
                         uploadStatusBox.BackColor = Color.Red;
                     }
+
                 }
             }
         }
