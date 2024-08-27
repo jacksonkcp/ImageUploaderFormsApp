@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,14 +74,20 @@ namespace ImageUploaderApp
                 {
                     var response = await httpClient.PostAsync("https://localhost:7035/Upload/image", form);
                     var responseString = await response.Content.ReadAsStringAsync();
-                    uploadStatusBox.Text = responseString; // Display URL or status
+                    var jsonRes = JsonConvert.DeserializeObject<Dictionary<string,string>>(responseString);
+
+                    if (jsonRes != null && jsonRes["upload"] == "Success")
+                    {
+                        uploadStatusBox.Text = "Success!";
+                        uploadStatusBox.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        uploadStatusBox.Text = "Error uploading image!";
+                        uploadStatusBox.BackColor = Color.Red;
+                    }
                 }
-
-
             }
-
-            //uploadStatusBox.Text = "Success!";
-            //uploadStatusBox.BackColor = Color.LightGreen;
         }
 
         private void viewWebPageBtn_Click(object sender, EventArgs e)

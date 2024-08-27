@@ -19,7 +19,7 @@ namespace ImageWebApp.Controllers
         {
             if (file == null || file.Length == 0)
             {
-                return BadRequest("No file uploaded.");
+                return BadRequest(new { Upload = "Failure" } );
             }
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images", file.FileName);
