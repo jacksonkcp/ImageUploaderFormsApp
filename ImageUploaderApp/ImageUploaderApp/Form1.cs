@@ -64,8 +64,10 @@ namespace ImageUploaderApp
             {
                 var fileContent = new ByteArrayContent(ImageToByteArray(imageDisplay.Image));
                 fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
-
-                form.Add(fileContent, "file", "image.jpg");
+                //var parts = locationBox.Text.Split('\\');
+                //string fileName = parts[parts.Length-1];
+                string fileName = "Image.jpg";
+                form.Add(fileContent, "file", $"{fileName}");
 
                 using(HttpClient httpClient = new HttpClient())
                 {

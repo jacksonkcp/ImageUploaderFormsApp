@@ -6,7 +6,7 @@
     <title>Uploaded Images</title>
 </head>
 <body>
-    <h1>Uploaded Images</h1>
+    <h1>Uploaded Image</h1>
     <div id="images">
         <!-- Images will be displayed here -->
     </div>
@@ -20,8 +20,6 @@
             images.forEach(image => {
                 const imgElement = document.createElement('img');
                 imgElement.src = image.filePath;
-                imgElement.style.width = '200px';
-                imgElement.style.margin = '10px';
                 imageDiv.appendChild(imgElement);
             });
         }
