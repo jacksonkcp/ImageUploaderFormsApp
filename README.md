@@ -1,8 +1,13 @@
 # ImageUploaderFormsApp
 Technical Challenge 2 for Toppan Security
+------------------------------------------
 
 ImageUploaderApp contains the code for the Windows Forms App which is the client-side app.
+
 ImageWebApp contains the code for the UploadController API which listens for HTTP POST requests and also the index.html for the web page that displays the uploaded image.
+
+
+--------------------------------
 
 1) Browse for an image. It will show up in the UI as confirmation.
 2) Click upload to send a POST request to the image upload controller which saves the image to a folder.
