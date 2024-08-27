@@ -6,6 +6,11 @@ ImageUploaderApp contains the code for the Windows Forms App which is the client
 
 ImageWebApp contains the code for the UploadController API which listens for HTTP POST requests and also the index.html for the web page that displays the uploaded image.
 
+-----------------------------------------
+How to run
+
+Open BOTH solutions ImageUploaderApp.sln, ImageWebApp.sln and run them.
+![ui-2](https://github.com/user-attachments/assets/f1af86cf-e125-4c47-b9ba-7037fe31b9a4)
 
 -----------------------------------------
 
